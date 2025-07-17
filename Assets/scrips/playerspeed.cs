@@ -23,6 +23,21 @@ public class playerspeed : MonoBehaviour
 
         // Move the player object
         transform.Translate(direction * Time.deltaTime * speed);
+        if (Input.GetKeyDown(KeyCode.W))
+{
+    direction = new Vector3(0, 0, verticalMovement);
+    transform.Translate(direction * Time.deltaTime * speed);
+}
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            direction = new Vector3(horizontalMovement, 0, 0);
+            transform.Translate(direction * Time.deltaTime * speed);
+        }
+// We use the codes to constraint the player movement within the scene
+transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9, 9f), 0.5f, Mathf.Clamp(transform.position.z, -3f, 3f));
+
+
     }
 }
 
